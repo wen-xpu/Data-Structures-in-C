@@ -1,3 +1,6 @@
+#include <iostream>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 #include<stdio.h>
 #include<stdlib.h>
 #define Stack_Size 50
@@ -56,48 +59,54 @@ int Judge(SeqStack *S,char str[100],int i)
 		printf("此序列不是回文序列");
 	return 0;
 
-}	
-
-int main()
+}
+int judgeLegal(char str[100])
 {
-	int i=0;
-    int count=0;
+	int count=0;
 	int j;
-	int flag=1;
+	int k=0;
 	char c;
-	char str[100];
-	SeqStack *S;
+	int flag=1;
+	printf("请输入需要判断的字符序列：\n");
+    
 	while(flag)
 	{
-		printf("请输入需要判断的字符序列：");
-        while((c=getchar())!='@')
+		while((c=getchar())!='@')
 		{
-		   str[i]=c;
-	       i++;
+		   str[k]=c;
+	       k++;
 		}fflush(stdin);
-		for(j=0;j<i;j++)
+		for(j=0;j<k;j++)
 		{
 			if(str[j]=='&')
 				count++;
 		}
 		if(count!=1)
 		{ 
-			i=0;
-		count = 0; 
-		continue;
-		for(j=0;j<100;j++)
+			
+			printf("输入错误，只能输入一个‘&’\n");
+			k=0;
+		    for(j=0;j<100;j++)
 			str[j]='\0';
+			judgeLegal(str);
 		}
-		else
-		{
-			flag=0;
-			count=0;
-		}
+		else break;
 		
 	}
+return k;
+}
+	
+
+
+
+int main()
+{
+	int i;
+	char str[100];
+	SeqStack *S;
+	i=judgeLegal(str);
 	InitStack(S);
 	Push(S,str,i);
 	Judge(S,str,i);
-	return 1;
-		
+	return 0; 
 }

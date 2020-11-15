@@ -1,6 +1,10 @@
 #include<stdio.h>
-int main()
-{
-	printf("hello world\n");
-	return 0;
+void main()
+{char s,t,q;
+int a;
+s='I AM A STUDENT ';
+t='GOOD';
+q='WORKER';
+a=StrLength(s);
+	printf("%d\n"&a);
 }
